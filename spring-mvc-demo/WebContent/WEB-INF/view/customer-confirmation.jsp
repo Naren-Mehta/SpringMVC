@@ -15,6 +15,9 @@
 		customer FirstName: ${customer.firstName} <br>
 		<br> customer LastName: ${customer.lastName} <br>
 <br> customer freePasses: ${customer.freePasses} <br>
+<br> customer postalCode: ${customer.postalCode} <br>
+<br> customer courseCode: ${customer.courseCode} <br>
+
 	</h3>
 
 </body>
