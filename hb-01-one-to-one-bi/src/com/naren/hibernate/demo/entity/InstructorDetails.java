@@ -1,10 +1,12 @@
 package com.naren.hibernate.demo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +23,10 @@ public class InstructorDetails {
 
 	@Column(name = "hobby")
 	private String hobby;
+	
+	@OneToOne(mappedBy = "instructorDetails",cascade = {CascadeType.DETACH,CascadeType.MERGE,
+			CascadeType.PERSIST,CascadeType.REFRESH})
+	private Instructor instructor;
 
 	public int getId() {
 		return id;
@@ -50,6 +56,16 @@ public class InstructorDetails {
 		super();
 		this.youtubeChannel = youtubeChannel;
 		this.hobby = hobby;
+	}
+	
+	
+
+	public Instructor getInstructor() {
+		return instructor;
+	}
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
 	}
 
 	public InstructorDetails() {
