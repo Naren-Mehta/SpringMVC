@@ -18,10 +18,10 @@ public class CreateDemo {
 
 		try {
 			System.out.println("Start saving==============>");
-			Instructor tempInstructor = new Instructor("Deepak", "Kasgar", "deepak@gmail.com");
+			Instructor tempInstructor = new Instructor("Deepak", "Singh", "deepak@gmail.com");
 
-			InstructorDetails tempInstructorDetails = new InstructorDetails("http://www.naren.com/youtube",
-					"Naren Course");
+			InstructorDetails tempInstructorDetails = new InstructorDetails("http://www.singh.com/youtube",
+					"Singh Course");
 			
 			tempInstructor.setInstructorDetails(tempInstructorDetails);
 			
