@@ -12,29 +12,43 @@ import org.springframework.transaction.annotation.Transactional;
 import com.naren.springdemo.entity.Customer;
 
 @Repository
-public class CustomerDAOImpl implements  CustomerDAO{
+public class CustomerDAOImpl implements CustomerDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Override
 	public List<Customer> getCustomers() {
-		
-		Session session= sessionFactory.getCurrentSession();
-		
-		Query<Customer> query=session.createQuery("from Customer order by lastName");
-		List<Customer> customerList= query.list();
-		
-		
+
+		Session session = sessionFactory.getCurrentSession();
+
+		Query<Customer> query = session.createQuery("from Customer order by lastName");
+		List<Customer> customerList = query.list();
+
 		return customerList;
 	}
 
 	@Override
 	public void saveCustomer(Customer theCustomer) {
-		
-		Session session= sessionFactory.getCurrentSession();
-		session.save(theCustomer);
-		
+
+		Session session = sessionFactory.getCurrentSession();
+
+//		session.save(theCustomer);
+		session.saveOrUpdate(theCustomer);
+
+	}
+
+	@Override
+	public Customer getCustomerFromId(int customerId) {
+
+		Session session = sessionFactory.getCurrentSession();
+		Customer customer = null;
+		try {
+			customer = session.get(Customer.class, customerId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return customer;
 	}
 
 }

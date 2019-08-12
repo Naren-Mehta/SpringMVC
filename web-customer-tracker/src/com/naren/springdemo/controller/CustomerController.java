@@ -45,10 +45,13 @@ public class CustomerController {
 	
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("customerId") int customerId, Model model) {
-		System.out.println("===inside update===");
-		return null;
+		Customer customer = customerService.getCustomerFromId(customerId);
+		model.addAttribute("customer",customer);
+		return "customer-form";
 		
 	}
+	
+	
 	
 	
 	
